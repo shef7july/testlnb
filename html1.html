@@ -1,0 +1,55 @@
+<html>
+<head>
+
+    <title>font changer</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #font-size {
+            width: 50px;
+            text-align: center;
+        }
+        #increase-btn, #decrease-btn {
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <button id="decrease-btn">-</button>
+        <input type="text" id="font-size" value="16">
+        <button id="increase-btn">+</button>
+    </div>
+
+    <p id="sample-text">Sample Text</p>
+
+    <script>
+        const fontSizeInput = document.getElementById('font-size');
+        const increaseBtn = document.getElementById('increase-btn');
+        const decreaseBtn = document.getElementById('decrease-btn');
+        const sampleText = document.getElementById('sample-text');
+
+        increaseBtn.addEventListener('click', () => {
+            fontSizeInput.value = parseInt(fontSizeInput.value) + 1;
+            updateSampleTextFont();
+        });
+
+        decreaseBtn.addEventListener('click', () => {
+            fontSizeInput.value = parseInt(fontSizeInput.value) - 1;
+            updateSampleTextFont();
+        });
+
+        fontSizeInput.addEventListener('input', () => {
+            updateSampleTextFont();
+        });
+
+        function updateSampleTextFont() {
+            const fontSize = fontSizeInput.value;
+            sampleText.style.fontSize = `${fontSize}px`;
+        }
+    </script>
+</body>
+</html>
